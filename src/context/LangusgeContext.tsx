@@ -15,7 +15,7 @@ export const LanguageProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [isEnglish, setIsEnglish] = useState(true);
+  const [isEnglish, setIsEnglish] = useState(false);
 
   return (
     <LanguageContext.Provider value={{ isEnglish, setIsEnglish }}>
