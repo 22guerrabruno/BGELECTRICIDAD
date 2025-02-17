@@ -1,6 +1,7 @@
 export async function sendNewContact(
   name: string,
   email: string,
+  phone: string,
   message: string
 ) {
   const res = await fetch('/api/send', {
@@ -8,7 +9,7 @@ export async function sendNewContact(
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ name, email, message }),
+    body: JSON.stringify({ name, email,phone, message }),
   });
   if (res.ok) {
     return res.json();

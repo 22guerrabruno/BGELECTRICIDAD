@@ -1,20 +1,21 @@
 'use client';
 import Logo from '@/components/Logo';
-import { Button } from '@/components/ui/button';
+
 import { useLanguage } from '@/context/LangusgeContext';
 import { sendNewContact } from '@/utils/send-email';
-import { Link, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
-import { set } from 'react-hook-form';
-import { FaFacebookSquare } from 'react-icons/fa';
-import { SiTripadvisor } from 'react-icons/si';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const ContactUs = () => {
   const { isEnglish } = useLanguage();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useRouter();
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Name:', name);
@@ -22,14 +23,32 @@ const ContactUs = () => {
     console.log('Message:', message);
     setLoading(true);
     try {
-      const res = sendNewContact(name, email, message);
+      const res = sendNewContact(name, email, phone, message);
+      const textResponse = isEnglish
+        ? 'Contact Request sent successfully, we will contact you as soon as possible'
+        : 'Correo Solicitud enviada correctamente, nos pondremos en contacto lo antes posible';
       setName('');
       setEmail('');
+      setPhone('');
       setMessage('');
+      toast.success(textResponse, {
+        duration: 5000,
+        position: 'bottom-right',
+      });
+      navigate.push('/');
+
       console.log(res);
     } catch (error: unknown) {
       console.log(error);
+      const textResponse = isEnglish
+        ? 'Error sending contact request, please try again later'
+        : 'Error al enviar la solicitud de contacto, por favor intente nuevamente más tarde';
+      toast.error(textResponse, {
+        duration: 5000,
+        position: 'bottom-right',
+      });
     }
+
     setLoading(false);
   };
   return (
@@ -58,6 +77,7 @@ const ContactUs = () => {
                 type='text'
                 placeholder={isEnglish ? 'John Doe' : 'Juan Perez'}
                 name='name'
+                required
                 className='w-96 h-10 border-2 border-gray-300 rounded-md px-2 focus:outline-gray-600'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -72,10 +92,27 @@ const ContactUs = () => {
               <input
                 type='email'
                 name='email'
+                required
                 placeholder='example@email.com'
                 className='w-96 h-10 border-2 border-gray-300 rounded-md px-2 focus:outline-gray-600'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className='flex flex-col leading-6 items-start justify-center gap-2'>
+              <label
+                htmlFor='phone'
+                className='w-full text-start font-raleway-400 text-sm'>
+                {isEnglish ? 'Phone:' : 'Teléfono:'}
+              </label>
+              <input
+                type='text'
+                name='phone'
+                required
+                placeholder='+34 123 456 789'
+                className='w-96 h-10 border-2 border-gray-300 rounded-md px-2 focus:outline-gray-600'
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
             <div className='flex flex-col leading-6 items-start justify-center gap-2'>
@@ -92,6 +129,7 @@ const ContactUs = () => {
                 }
                 rows={5}
                 name='message'
+                required
                 className='w-96 h-40 border-2 border-gray-300 rounded-md px-2 focus:outline-gray-600 resize-none'
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}

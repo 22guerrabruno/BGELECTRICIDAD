@@ -4,6 +4,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { LanguageProvider } from '@/context/LangusgeContext';
 import { vibes, raleway, oswald } from '@/utils/fonts';
+import TosterContext from '@/context/ToasterContext';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} ${vibes} ${raleway} ${oswald}`}>
         <LanguageProvider>
+          <TosterContext />
           <Navbar />
           {children}
         </LanguageProvider>

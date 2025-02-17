@@ -1,25 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
-import BestCocktails from '@/components/BestCocktails';
-import Card from '@/components/Card';
-import Carousel from '@/components/Carousel';
-import CartelTel from '@/components/CartelTel';
-import Cocktails from '@/components/Cocktails';
-import Dessert from '@/components/Dessert';
-import ExtraContent from '@/components/ExtraContent';
-import Gastronomy from '@/components/Gastronomy';
-import HealthyFood from '@/components/HealthyFood';
-import Hero from '@/components/Hero';
-import Pictures from '@/components/Pictures';
-import { Button } from '@/components/ui/button';
+
 import { useLanguage } from '@/context/LangusgeContext';
-import Link from 'next/link';
+
 import { useInView } from 'react-intersection-observer';
-import { motion } from 'framer-motion';
-import Location from '@/components/Location';
+
 import Hero2 from '@/components/Hero2';
 import Logo from '@/components/Logo';
-import { FaFacebookSquare, FaTripadvisor } from 'react-icons/fa';
+
 import Services from '@/components/Services';
 import Footer from '@/components/Footer';
 import Brands from '@/components/Brands';

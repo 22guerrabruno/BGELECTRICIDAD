@@ -53,7 +53,7 @@ const planes = [
     caracteristicas: [
       'Instalación de termostato inteligente',
       'Configuración de iluminación inteligente',
-      'Videoportero wifi',
+      'Videoportero WI-FI',
       'Control mediante aplicación móvil',
     ],
   },
