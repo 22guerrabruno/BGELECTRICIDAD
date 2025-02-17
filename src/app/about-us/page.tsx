@@ -5,6 +5,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Footer from '@/components/Footer';
 
 const AboutUsPage = () => {
   const { isEnglish } = useLanguage();
@@ -140,13 +141,8 @@ const AboutUsPage = () => {
           </button>
         </Link>
       </div>
-      <div className='font-raleway-400 text-xs w-full bg-gray-900 p-2 text-center text-white'>
-        <p> © 2024 BG Electricidad. All Rights Reserved.</p>
-        <a
-          href='https://www.brunoguerracode.dev/'
-          target='_blank'>
-          Created by Bruno Guerra
-        </a>
+      <div className='w-full '>
+        <Footer />
       </div>
     </>
   );

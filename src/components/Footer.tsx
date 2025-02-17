@@ -70,7 +70,7 @@ export default function Footer() {
             <ul className='space-y-2'>
               <li>
                 <Link
-                  href='#'
+                  href='/about-us'
                   className='text-gray-400 hover:text-white sm:text-xs'>
                   {isEnglish ? 'About Us' : 'Sobre Nosotros'}
                 </Link>
@@ -78,7 +78,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  href='#'
+                  href='/contact-us'
                   className='text-gray-400 hover:text-white sm:text-xs'>
                   {isEnglish ? 'Contact Us' : 'Contáctenos'}
                 </Link>

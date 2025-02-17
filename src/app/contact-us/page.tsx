@@ -7,6 +7,7 @@ import { Loader2 } from 'lucide-react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
+import Footer from '@/components/Footer';
 
 const ContactUs = () => {
   const { isEnglish } = useLanguage();
@@ -170,17 +171,8 @@ const ContactUs = () => {
         <hr className='h-1 border-1 w-full border-gray-200' />
         <Logo />
       </div>
-      <div className='font-raleway-400 text-xs w-full bg-gray-900 p-2 text-center text-white flex items-center justify-between flex-wrap'>
-        <p className='whitespace-nowrap w-full'>
-          {' '}
-          © 2018 BG Electricidad. All Rights Reserved.
-        </p>
-        <a
-          href='https://www.brunoguerracode.dev/'
-          target='_blank'
-          className='whitespace-nowrap w-full'>
-          Created by Bruno Guerra
-        </a>
+      <div className='w-full '>
+        <Footer />
       </div>
     </div>
   );
